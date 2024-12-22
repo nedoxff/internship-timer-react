@@ -1,0 +1,15 @@
+#theme-switch-button {
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--text);
+    border-radius: 9999px;
+    padding: 0.5rem;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 150ms all;
+    aspect-ratio: 1 / 1;
+
+    &:hover {
+        background-color: var(--text);
+        color: var(--bg);
+        cursor: pointer;
+    }
+}

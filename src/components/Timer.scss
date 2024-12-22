@@ -1,0 +1,31 @@
+#timer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: "Jetbrains Mono";
+
+    #timer-controls {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #saved-times {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        align-items: stretch;
+        justify-content: stretch;
+        width: 100%;
+        max-height: 50dvh;
+        overflow-y: scroll;
+
+        &:not(:empty) {
+            margin-top: 0.5rem;
+        }
+    }
+}

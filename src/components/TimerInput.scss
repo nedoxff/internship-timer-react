@@ -1,0 +1,18 @@
+#timer-container {
+    input {
+        font-family: "Jetbrains Mono";
+        font-size: 4rem;
+        width: 8ch;
+
+        border: none; 
+        padding: 0;
+        margin: 0;
+        background-color: var(--bg);
+        color: var(--text);
+    }
+
+    input:focus {
+        outline: none;
+        border-bottom: 2px solid var(--text);
+    }
+}

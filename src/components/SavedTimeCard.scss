@@ -1,0 +1,27 @@
+.saved-time-card {
+    padding: 0.5rem;
+    border: 1px solid var(--text);
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    > div {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button {
+        background-color: var(--bg);
+        color: var(--text);
+        border: none;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

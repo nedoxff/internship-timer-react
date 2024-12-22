@@ -1,0 +1,26 @@
+.custom-button {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    justify-content: center;    
+    align-items: center;
+
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--text);
+    border-radius: 9999px;
+    padding: 0.5rem;
+    font-family: "Inter";
+    font-size: 1.25rem;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 150ms all;
+
+    &:hover {
+        background-color: var(--text);
+        color: var(--bg);
+        cursor: pointer;
+    }
+    
+    &:has(svg) {
+        padding-right: 0.75rem;
+    }
+}

@@ -1,0 +1,11 @@
+:root {
+    --bg: white;
+    --text: #202020;
+    --border-finished: #ff6961;
+}
+
+:root.dark {
+    --bg: #202020;
+    --text: white;
+    --border-finished: #ffc067;
+}
