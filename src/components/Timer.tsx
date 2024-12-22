@@ -14,7 +14,7 @@ function Timer(props: TimerProps) {
     const inputRef = useRef<TimerInputRef>(null);
     const alarmRef = useRef<HTMLAudioElement>(null);
 
-    const [savedTimes, setSavedTimes] = useState<number[]>([]);
+    const [savedTimes, setSavedTimes] = useState<string[]>([]);
 
     const [intervalId, setIntervalId] = useState(-1);
     const [paused, setPaused] = useState(false);
@@ -103,14 +103,6 @@ function Timer(props: TimerProps) {
         inputRef.current?.setUserTime("000000");
     }
 
-    const addSavedTime = () => {
-        if(!paused) setSavedTimes([...savedTimes, dayjs(targetDate).diff()]);
-        else {
-            const pauseTime = dayjs().diff(pauseDate);
-            setSavedTimes([...savedTimes, dayjs(targetDate).add(pauseTime, 'milliseconds').diff()]);
-        }
-    }
-
     return (<div id="timer-container">
         <TimerInput ref={inputRef} />
         <div id="timer-controls">
@@ -118,12 +110,14 @@ function Timer(props: TimerProps) {
             {started && !alarmPlaying &&
                 (paused ? <CustomButton onClick={() => setPaused(false)} icon="material-symbols:resume-rounded">resume</CustomButton>
                     : <CustomButton onClick={() => setPaused(true)} icon="material-symbols:pause-rounded">pause</CustomButton>)}
-            {started && !alarmPlaying && <CustomButton onClick={addSavedTime} icon="material-symbols:save-clock-outline-rounded">save</CustomButton>}
+            {started && !alarmPlaying && <CustomButton onClick={() => setSavedTimes([...savedTimes, inputRef.current!.getUserTime()])} icon="material-symbols:save-clock-outline-rounded">save</CustomButton>}
             {started && <CustomButton onClick={reset} icon="material-symbols:device-reset-rounded">reset</CustomButton>}
         </div>
         <div id="saved-times">
-                {savedTimes?.map((time: number) => 
-                    (<SavedTimeCard time={time} onRemove={() => setSavedTimes(savedTimes.filter(x => x != time))}/>))}
+                {savedTimes?.map((time: string, idx: number) => 
+                    (<SavedTimeCard 
+                        time={time} 
+                    onRemove={() => setSavedTimes([...savedTimes.slice(0, idx), ...savedTimes.slice(idx + 1)])}/>))}
         </div>
         <audio loop src="alarm.mp3" ref={alarmRef} />
     </div>)
