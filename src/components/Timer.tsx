@@ -93,6 +93,7 @@ function Timer(props: TimerProps) {
         clearInterval(intervalId);
         setTargetDate(null);
         setPauseDate(null);
+        setPaused(false);
         setIntervalId(-1);
         setSavedTimes([]);
         setAlarmPlaying(false);
